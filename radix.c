@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:14:03 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/03/08 19:21:39 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:56:31 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_node	*new_index(t_node **a)
 				i++;
 			aux_index = aux_index->next;
 		}
-		link_end(&list_radix, criate_list(ft_itoa(i)));
+		link_end(&list_radix, criate_list(i));
 		aux = aux->next;
 	}
 	return (list_radix);
@@ -76,5 +76,5 @@ void	radix(t_node **a, t_node **b, int max_index)
 			pa(&list_radix, b);
 		i++;
 	}
-    ft_free(list_radix);
+	ft_free(list_radix);
 }

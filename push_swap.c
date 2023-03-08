@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:39:39 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/03/08 19:20:54 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:53:27 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void	sort(t_node **a, t_node **b, int argc)
 		radix(a, b, argc - 1);
 }
 
-void ft_free(t_node *list)
+void	ft_free(t_node *list)
 {
-    if (list)
-    {
-        ft_free(list->next);
-        free(list);
-    }   
+	if (list)
+	{
+		ft_free(list->next);
+		free(list);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -61,12 +61,12 @@ int	main(int argc, char **argv)
 	{
 		if (check(argv[i]) == 0)
 			return (0);
-		link_end(&a, criate_list(argv[i++]));
+		link_end(&a, criate_list(ft_atoi(argv[i++])));
 	}
 	if (check_error(&a) == 0)
 		return (0);
 	sort(&a, &b, argc);
-    ft_free(a);
-    ft_free(b);
+	ft_free(a);
+	ft_free(b);
 	return (0);
 }

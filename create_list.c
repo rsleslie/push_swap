@@ -6,19 +6,18 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:31:43 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/03/08 19:29:16 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:40:13 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*criate_list(char *num)
+t_node	*criate_list(int num)
 {
 	t_node	*aux;
 
 	aux = malloc(sizeof(t_node));
-	aux->value = atoi(num);
-    free(num);
+	aux->value = num;
 	aux->next = NULL;
 	return (aux);
 }

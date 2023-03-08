@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 23:19:35 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/03/08 15:16:32 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:56:12 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,22 @@ void	rra(t_node **a)
 
 void	pa(t_node **a, t_node **b)
 {
-	linkar(a, criate_list(ft_itoa((*b)->value)));
-	*b = (*b)->next;
+	t_node	*aux;
+
+	linkar(a, criate_list((*b)->value));
+	aux = (*b)->next;
+	free(*b);
+	*b = aux;
 	write(1, "pa\n", 3);
 }
 
 void	pb(t_node **a, t_node **b)
 {
-	linkar(b, criate_list(ft_itoa((*a)->value)));
-	*a = (*a)->next;
+	t_node	*aux;
+
+	linkar(b, criate_list((*a)->value));
+	aux = (*a)->next;
+	free(*a);
+	*a = aux;
 	write(1, "pb\n", 3);
 }
