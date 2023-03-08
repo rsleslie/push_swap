@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:31:43 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/03/08 13:30:17 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:29:16 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_node	*criate_list(char *num)
 
 	aux = malloc(sizeof(t_node));
 	aux->value = atoi(num);
+    free(num);
 	aux->next = NULL;
 	return (aux);
 }
@@ -32,14 +33,14 @@ t_node	*node_last(t_node *list)
 	return (last);
 }
 
-void linkar(t_node **lista, t_node *atual)
+void	linkar(t_node **lista, t_node *atual)
 {
 	if (lista == NULL)
-		return;
+		return ;
 	if (*lista == NULL)
 	{
 		*lista = atual;
-		return;
+		return ;
 	}
 	atual->next = *lista;
 	*lista = atual;
@@ -59,4 +60,3 @@ void	link_end(t_node **list, t_node *atual)
 	aux = node_last(*list);
 	aux->next = atual;
 }
-

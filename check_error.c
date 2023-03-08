@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:43:00 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/03/08 14:47:26 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:31:03 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	check(char *str)
 	while (str[i])
 	{
 		while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32 || str[i] == '-')
-		    i++;
-		if (ft_isdigit(str[i]))
-        {
-            write(1, "Error\n", 7);
+			i++;
+		if (!ft_isdigit(str[i]))
+		{
+			write(1, "Error\n", 7);
 			return (0);
-        }
+		}
 		i++;
 	}
 	return (1);
@@ -34,32 +34,30 @@ int	check(char *str)
 int	check_error(t_node **list)
 {
 	if (duplicated(list) == 0)
-    {
-        write(1, "Error\n", 7);
+	{
+		write(1, "Error\n", 7);
 		return (0);
-    }
-    if (order(list) == 0)
-    {
-        write(1, "Error\n", 7);
+	}
+	if (order(list) == 0)
 		return (0);
-    }
 	return (1);
 }
 
-int order(t_node **list)
+int	order(t_node **list)
 {
-	t_node *aux;
+	int		size_list;
+	t_node	*aux;
 	int		i;
 
 	i = 0;
 	aux = *list;
-    int size_list = 0;
+	size_list = 0;
 	while (aux->next != NULL)
 	{
 		if (aux->value < aux->next->value)
-		    i += 1;	
+			i += 1;
 		aux = aux->next;
-        size_list++;
+		size_list++;
 	}
 	if (i == size_list)
 		return (0);
@@ -69,11 +67,11 @@ int order(t_node **list)
 
 int	duplicated(t_node **list)
 {
-	t_node *aux;
-	t_node *aux_aux;
+	t_node	*aux;
+	t_node	*aux_aux;
 
 	aux = *list;
-	while(aux != NULL)
+	while (aux != NULL)
 	{
 		aux_aux = aux->next;
 		while (aux_aux != NULL)

@@ -6,34 +6,35 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:14:03 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/03/08 14:38:49 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:21:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
-int size_binary(int max)
+int	size_binary(int max)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (1)
 	{
-		if (!(max>>i))
+		if (!(max >> i))
 			break ;
 		i++;
 	}
-	return(i);
+	return (i);
 }
 
-t_node *new_index(t_node **a)
+t_node	*new_index(t_node **a)
 {
 	int		i;
 	t_node	*aux;
 	t_node	*aux_index;
-	t_node	*list_radix = NULL;
-	
+	t_node	*list_radix;
+
 	aux = *a;
+	list_radix = NULL;
 	while (aux != NULL)
 	{
 		i = 0;
@@ -50,31 +51,30 @@ t_node *new_index(t_node **a)
 	return (list_radix);
 }
 
-void	radix(t_node **a, t_node **b)
+void	radix(t_node **a, t_node **b, int max_index)
 {
 	int		i;
 	int		value;
 	int		max_binary;
-	int		max_index;
-	t_node *list_radix;
-	
-	max_binary = size_binary(position_max(a));
+	t_node	*list_radix;
+
+	max_binary = size_binary(position_max(a, 0));
 	list_radix = new_index(a);
-	max_index = push_strlen(list_radix);
 	i = 0;
-	while (i < max_binary)
+	while (order(&list_radix) != 0)
 	{
 		value = 0;
 		while (value < max_index)
 		{
 			if ((list_radix->value >> i) & 1)
-				ra(&list_radix); 
+				ra(&list_radix);
 			else
 				pb(&list_radix, b);
 			value++;
 		}
-		while (push_strlen(*b) != 0)
+		while (*b)
 			pa(&list_radix, b);
 		i++;
-	}	
+	}
+    ft_free(list_radix);
 }
